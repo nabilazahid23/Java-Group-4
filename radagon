@@ -1,0 +1,19 @@
+class Radagon extends Boss {
+    public Radagon() {
+        super("Radagon", 100, 25, 35);
+    }
+
+    public int getRandomDamage() {
+        return new Random().nextInt(maxDamage - minDamage + 1) + minDamage;
+    }
+
+    public void enterSecondPhase() {
+        if (!secondPhaseTriggered) {
+            secondPhaseTriggered = true;
+            System.out.println("Radagon shatters and reforms as the Elden Beast! His divine power burns the very air.");
+            this.name = "Elden Beast";
+            this.minDamage += 20;
+            this.maxDamage += 25;
+        }
+    }
+}
