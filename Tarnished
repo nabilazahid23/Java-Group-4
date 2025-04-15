@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Tarnished {
 
 
-    //attributes
+  
     private String name;
     private int health;
     private String sword;
@@ -15,7 +15,7 @@ public class Tarnished {
 
     private Scanner scanner = new Scanner(System.in);
 
-    // Constructor
+  
     public Tarnished() {
         System.out.println("Awaken tarnished, the lost hero without memory but not without purpose.");
         System.out.println("Cross the veil between the lands to stand before the Elden Ring and become the Elden Lord.");
@@ -34,7 +34,7 @@ public class Tarnished {
 }
 
     public int attack() {
-        return new Random().nextInt(11) + 15; // 15 to 25
+        return new Random().nextInt(11) + 15; 
     }
 
     public int heal() {
