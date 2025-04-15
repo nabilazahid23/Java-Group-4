@@ -1,0 +1,12 @@
+class SideQuest {
+    int completed = 0;
+
+    public void completeQuest() {
+        completed++;
+        System.out.println("You completed a quest! Bonus damage increased.");
+    }
+
+    public int getBonus() {
+        return completed * 2;
+    }
+}
