@@ -1,18 +1,1 @@
-class Radahn extends Boss {
-    public Radahn() {
-        super("Radahn", 100, 15, 25);
-    }
 
-    public int getRandomDamage() {
-        return new Random().nextInt(maxDamage - minDamage + 1) + minDamage;
-    }
-
-    public void enterSecondPhase() {
-        if (!secondPhaseTriggered) {
-            secondPhaseTriggered = true;
-            System.out.println("Radahn channels the stars into his blade! His strikes become devastating.");
-            this.minDamage += 10;
-            this.maxDamage += 15;
-        }
-    }
-}
