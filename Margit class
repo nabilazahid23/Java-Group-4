@@ -10,7 +10,7 @@ class Margit extends Boss {
     public void enterSecondPhase() {
         if (!secondPhaseTriggered) {
             secondPhaseTriggered = true;
-            System.out.println("Margit has unleashed his seond phase , his His strikes become devastating ");
+            System.out.println("Margit has unleashed his seond phase , His strikes become devastating ");
             this.minDamage += 5;
             this.maxDamage += 10;
         }
