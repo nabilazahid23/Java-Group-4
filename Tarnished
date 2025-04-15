@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Tarnished {
+
+
+    //attributes
+    private String name;
+    private int health;
+    private String sword;
+    private String mount;
+    private int runes;
+    private int flaskCharges;
+    private double flaskHealPercent;
+
+
+    private Scanner scanner = new Scanner(System.in);
+
+    // Constructor
+    public Tarnished() {
+        System.out.println("Awaken tarnished, the lost hero without memory but not without purpose.");
+        System.out.println("Cross the veil between the lands to stand before the Elden Ring and become the Elden Lord.");
+        System.out.print("\n“What is thy name hero” – ");
+
+        this.name = scanner.nextLine();
+        this.health = 100;
+        this.sword = "";
+        this.mount = "";
+        this.runes = 0;
+        this.flaskCharges = 0;
+        this.flaskHealPercent = 0.0;
+
+        System.out.println("\nNow " + name + ", seek allies, face the trials and prove yourself worthy of becoming the Elden Lord.");
+    }
+
+ 
+    public void displayStats() {
+        System.out.println("\n==== TARNISHED STATS ====");
+        System.out.println("Name: " + name);
+        System.out.println("Health: " + health + "%");
+        System.out.println("Sword: " + (sword.isEmpty() ? "None" : sword));
+        System.out.println("Mount: " + (mount.isEmpty() ? "None" : mount));
+        System.out.println("Flask Charges: " + flaskCharges);
+        System.out.println("Flask Heal: " + flaskHealPercent + "%");
+        System.out.println("Runes: " + runes);
+        System.out.println("=========================");
+    }
+}
