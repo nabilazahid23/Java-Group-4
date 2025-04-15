@@ -1,0 +1,18 @@
+class Margit extends Boss {
+    public Margit() {
+        super("Margit", 100, 10, 20);
+    }
+
+    public int getRandomDamage() {
+        return new Random().nextInt(maxDamage - minDamage + 1) + minDamage;
+    }
+
+    public void enterSecondPhase() {
+        if (!secondPhaseTriggered) {
+            secondPhaseTriggered = true;
+            System.out.println("Margit has unleashed his seond phase , his His strikes become devastating ");
+            this.minDamage += 5;
+            this.maxDamage += 10;
+        }
+    }
+}
