@@ -1,0 +1,17 @@
+abstract class Boss {
+    String name;
+    int hp;
+    int minDamage;
+    int maxDamage;
+    boolean secondPhaseTriggered = false;
+
+    public Boss(String name, int hp, int minDamage, int maxDamage) {
+        this.name = name;
+        this.hp = hp;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
+    }
+
+    public abstract int getRandomDamage();
+    public abstract void enterSecondPhase();
+}
