@@ -17,11 +17,7 @@ public class Tarnished {
 
   
     public Tarnished() {
-        System.out.println("Awaken tarnished, the lost hero without memory but not without purpose.");
-        System.out.println("Cross the veil between the lands to stand before the Elden Ring and become the Elden Lord.");
-        System.out.print("\n“What is thy name hero” – ");
-
-        this.name = scanner.nextLine();
+       
         this.health = 100;
         this.sword = "King’s Greatsword";
         this.mount = "Torrent";
