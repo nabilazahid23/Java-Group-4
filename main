@@ -50,8 +50,23 @@ public static void main(String[] args) {
         }
         }
 
+//rogier quest: if riddle is correct we add the line layer.flaskHealPercent = 0.50; to increese the flask heal percent
+
        
-        //nabila do rogier quest here if the riddle is correct add the line layer.flaskHealPercent = 0.50; to increese the flask heal percent
+        System.out.println("You find Sorcerer Rogier under the limbs of a fallen tree, spellbook in hand.");
+        System.out.println("Rogier: 'Answer me this riddle, and I shall empower thy flask...'");
+        System.out.println("Rogier: 'I am always hungry, I must always be fed, The finger I touch, will soon turn red. What am I?'");
+
+        String riddleAnswer = scanner.nextLine().toLowerCase();
+
+     if (riddleAnswer.contains("fire")) {
+        System.out.println("Rogier: 'Thou art wise indeed...'");
+        player.flaskHealPercent = 0.50; 
+        System.out.println("Your Flask of Crimson Tears now heals 50% of your health.");
+     } else {
+      System.out.println("Rogier: 'Alas, that is not the answer I sought... Return if wisdom finds you.'");
+     }
+
 
      
         quests.completeQuest();
