@@ -1,1 +1,19 @@
+class Radagon extends Boss {
+    public Radagon() {
+        super("Radagon of the Golden Order", 120, 30, 40);
+    }
+
+    public int getRandomDamage() {
+        return new Random().nextInt(maxDamage - minDamage + 1) + minDamage;
+    }
+
+    public void enterSecondPhase() {
+        if (!secondPhaseTriggered) {
+            secondPhaseTriggered = true;
+            System.out.println("Radagon's body cracks as he enters the second phase, divine light radiates as he channels the Golden Order's might!");
+            this.minDamage += 15;
+            this.maxDamage += 20;
+        }
+    }
+}
 
