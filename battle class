@@ -38,6 +38,14 @@ class Battle {
             }
         }
 
-        return player.hp > 0;
+        if (player.hp > 0) {
+            System.out.println("You defeated " + boss.name + "!");
+            player.hp = 100;
+            player.flaskCharges = 3;
+            System.out.println("Your health and flasks have been restored.");
+            return true;
+        } else {
+            return false;
+        }
     }
 }
