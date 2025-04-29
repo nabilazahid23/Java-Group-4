@@ -1,6 +1,6 @@
 class Margit extends Boss {
     public Margit() {
-        super("Margit", 110, 10, 20);
+        super("Margit", 100, 10, 20);
     }
 
     public int getRandomDamage() {
