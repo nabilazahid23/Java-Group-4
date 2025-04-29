@@ -1,6 +1,6 @@
 class Radahn extends Boss {
     public Radahn() {
-        super("Radahn", 100, 10, 20);
+        super("Radahn", 110, 20, 30);
     }
 
     public int getRandomDamage() {
