@@ -1,3 +1,4 @@
+public class EldenRingGame {
 public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -104,4 +105,5 @@ public static void main(String[] args) {
 
         System.out.println("You defeated all bosses. You are now the Elden Lord!");
     }
+}
 }
