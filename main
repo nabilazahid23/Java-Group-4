@@ -1,30 +1,19 @@
 public class EldenRingGame {
-public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Awaken Tarnished, the lost hero without memory but not without purpose.");
-        System.out.println("Cross the vail between the lands to stand before the Elden Ring and become the Elden Lord.");
-        System.out.print("What is thy name, hero? ");
-        String name = scanner.nextLine();
-
-        System.out.println("Now " + name + ", seek allies, face the trials and prove yourself worthy of becoming the Elden Lord.");
-        System.out.println("Grace has bestowed you with a great sword worthy of a king to be and a mighty steed known as Torrent.");
-        System.out.println("You hear a voice call you, to seek her out...");
-
         Tarnished player = new Tarnished();
         SideQuest quests = new SideQuest();
 
-        
         System.out.println("You passed by the church of Marika where the sites of grace calls to you to sit.");
         System.out.println("The day goes by and by night the lunar princess Ranni shows up behind you shining as bright as the moon.");
         System.out.println("Ranni: 'The stars have told me of you, Tarnished... Would you like to join me?' (yes/no)");
+
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
             quests.completeQuest();
             System.out.println("Ranni: 'Find the lost flask of health in the maze of stars...'");
 
-           
             System.out.println("You enter the Maze of Stars. Choose your path by typing: left, right, or forward.");
-            String path = "";
+            String path;
             boolean foundFlask = false;
 
             while (!foundFlask) {
@@ -32,70 +21,55 @@ public static void main(String[] args) {
                 path = scanner.nextLine().toLowerCase();
                 switch (path) {
                     case "left":
-                        System.out.println("You went left and past a door you see darkness , thinking you might be on the right path you go into the darkness just to fall into the void");
+                        System.out.println("You went left and found yourself lost in a void.");
                         break;
                     case "right":
-                        System.out.println("You went right into a bright lit room. as soon as you entered you was ambushed by a creature that stood behind the door");
+                        System.out.println("You went right and were ambushed by a lurking enemy.");
                         break;
                     case "forward":
-                        System.out.println("You went ahead and found the flask , ranni awaits for you");
+                        System.out.println("You found the flask! Ranni awaits your return.");
                         foundFlask = true;
                         break;
                     default:
-                        System.out.println("That is not a valid direction. Try: left, right, or forward.");
+                        System.out.println("Invalid direction. Try: left, right, or forward.");
                 }
             }
 
             System.out.println("You return to Ranni.");
-            System.out.println("Ranni: 'You have returned with the flask of health. It has 3 charges and restores 36% HP. Seek Sorcerer Rogier.'");
-        }
+            System.out.println("Ranni: 'This flask restores 36% HP and has 3 charges. Seek Sorcerer Rogier.'");
         }
 
-//rogier quest: if riddle is correct we add the line layer.flaskHealPercent = 0.50; to increese the flask heal percent
-
-       
-        System.out.println("You find Sorcerer Rogier under the limbs of a fallen tree, spellbook in hand.");
-        System.out.println("Rogier: 'Answer me this riddle, and I shall empower thy flask...'");
+        System.out.println("You find Sorcerer Rogier.");
         System.out.println("Rogier: 'I am always hungry, I must always be fed, The finger I touch, will soon turn red. What am I?'");
-
         String riddleAnswer = scanner.nextLine().toLowerCase();
 
-     if (riddleAnswer.contains("fire")) {
-        System.out.println("Rogier: 'Thou art wise indeed...'");
-        player.flaskHealPercent = 0.50; 
-        System.out.println("Your Flask of Crimson Tears now heals 50% of your health.");
-     } else {
-      System.out.println("Rogier: 'Alas, that is not the answer I sought... Return if wisdom finds you.'");
-     }
+        if (riddleAnswer.contains("fire")) {
+            System.out.println("Rogier: 'Thou art wise indeed...'");
+            player.setFlaskHealPercent(0.50);
+            System.out.println("Your Flask now heals 50% of your health.");
+        } else {
+            System.out.println("Rogier: 'That is not the answer. Return if wisdom finds you.'");
+        }
 
-
-     
         quests.completeQuest();
         System.out.println("Alexander: 'Join me in the arena outside Stormveil.'");
         Battle alexBattle = new Battle(player, new Alexander());
-        if (alexBattle.start()) {
-            System.out.println("Alexander: 'Well done, Tarnished. Take these 100k runes and seek Hewg.'");
-        } else {
+        if (!alexBattle.start()) {
             System.out.println("Alexander has bested you. Your journey ends here.");
             return;
         }
 
-        System.out.println("You follow Alexander's advice and find the bladesmith Hewg near Stormveil.");
-        System.out.println("Hewg: 'Bring me runes, and I’ll shape the steel to match your spirit.'");
-
-        System.out.print("Do you want to upgrade your sword using 100k runes? (yes/no): ");
+        System.out.println("Alexander: 'Well done, Tarnished. Seek Hewg for your next upgrade.'");
+        System.out.println("Hewg: 'Do you wish to upgrade your sword using 100k runes?' (yes/no)");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
-            player.minDamage += 5;
-            player.maxDamage += 10;
-            System.out.println("Hewg: 'There. Do you feel that weight?'");
+            player.upgradeWeapon(5, 10);
+            System.out.println("Hewg: 'There. Now go and make someone bleed for it.'");
         } else {
-            System.out.println("Hewg: 'No coin, no steel. Come back when you’ve made someone bleed for it.'");
+            System.out.println("Hewg: 'Come back when you’re ready to forge glory.'");
         }
 
-      
-        quests.completeQuest();
-        player.bonus = quests.getBonus();
-        for (Boss boss : new Boss[]{new Margit(), new Radahn(), new Godfrey(), new Radagon()}) {
+        Boss[] bosses = { new Margit(), new Radahn(), new Godfrey(), new Radagon() };
+        for (Boss boss : bosses) {
             Battle battle = new Battle(player, boss);
             if (!battle.start()) {
                 System.out.println("You died. The path to Elden Lord ends here.");
@@ -106,4 +80,4 @@ public static void main(String[] args) {
         System.out.println("You defeated all bosses. You are now the Elden Lord!");
     }
 }
-}
+
