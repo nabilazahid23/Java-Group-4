@@ -1,0 +1,43 @@
+class Battle {
+    Tarnished player;
+    Boss boss;
+    Scanner scanner = new Scanner(System.in);
+
+    public Battle(Tarnished player, Boss boss) {
+        this.player = player;
+        this.boss = boss;
+    }
+
+    public boolean start() {
+        System.out.println("\nBattle Start: " + boss.name + " appears!");
+        while (boss.hp > 0 && player.hp > 0) {
+            if (!boss.secondPhaseTriggered && boss.hp <= 50) {
+                boss.enterSecondPhase();
+            }
+
+            System.out.print("Choose action (attack/heal): ");
+            String action = scanner.nextLine().toLowerCase();
+
+            if (action.equals("attack")) {
+                int dmg = player.attack();
+                boss.hp -= dmg;
+                System.out.println("You dealt " + dmg + " to " + boss.name + ". Boss HP: " + boss.hp);
+            } else if (action.equals("heal")) {
+                int healed = player.heal();
+                if (healed > 0) {
+                    System.out.println("You healed for " + healed + ". Your HP: " + player.hp);
+                } else {
+                    System.out.println("No flask charges left!");
+                }
+            }
+
+            if (boss.hp > 0) {
+                int bossDmg = boss.getRandomDamage();
+                player.hp -= bossDmg;
+                System.out.println(boss.name + " hits you for " + bossDmg + ". Your HP: " + player.hp);
+            }
+        }
+
+        return player.hp > 0;
+    }
+}
