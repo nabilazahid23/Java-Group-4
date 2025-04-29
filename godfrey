@@ -1,5 +1,5 @@
 class godfrey extends Boss {
-    public Godfrey() {
+    public godfrey() {
         super("Godfrey, First Elden Lord", 140, 25, 35);
     }
 
