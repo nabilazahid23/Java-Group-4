@@ -11,7 +11,7 @@ class Battle {
     public boolean start() {
         System.out.println("\nBattle Start: " + boss.name + " appears!");
         while (boss.hp > 0 && player.hp > 0) {
-            if (!boss.secondPhaseTriggered && boss.hp <= 50) {
+            if (!boss.secondPhaseTriggered && boss.hp <= boss.hp / 2) {
                 boss.enterSecondPhase();
             }
 
@@ -38,14 +38,12 @@ class Battle {
             }
         }
 
-        if (player.hp > 0) {
+        boolean won = player.hp > 0;
+        if (won) {
             System.out.println("You defeated " + boss.name + "!");
-            player.hp = 100;
-            player.flaskCharges = 3;
-            System.out.println("Your health and flasks have been restored.");
-            return true;
-        } else {
-            return false;
+            player.resetAfterBattle();
+            player.upgradeWeapon(2, 3);
         }
+        return won;
     }
 }
