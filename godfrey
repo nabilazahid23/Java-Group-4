@@ -1,6 +1,6 @@
 class godfrey extends Boss {
     public godfrey() {
-        super("Godfrey, First Elden Lord", 140, 25, 35);
+        super("Godfrey, First Elden Lord", 140, 20, 30);
     }
 
     public int getRandomDamage() {
@@ -12,8 +12,8 @@ class godfrey extends Boss {
             secondPhaseTriggered = true;
             // In-game dialouge Godfrey says
             System.out.println("I've Given thee courtesy enough. Now I fight as Hoarah Loux! Warrior!");
-            this.minDamage += 20;
-            this.maxDamage += 30;
+            this.minDamage += 25;
+            this.maxDamage += 35;
         }
     }
 }
