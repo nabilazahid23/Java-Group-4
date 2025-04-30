@@ -68,7 +68,7 @@ public class EldenRingGame {
             System.out.println("Hewg: 'Come back when you’re ready to forge glory.'");
         }
 
-        Boss[] bosses = { new Margit(), new Radahn(), new Godfrey(), new Radagon() };
+        Boss[] bosses = { new Margit(), new Radahn(), new godfrey(), new Radagon() };
         for (Boss boss : bosses) {
             Battle battle = new Battle(player, boss);
             if (!battle.start()) {
