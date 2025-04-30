@@ -62,7 +62,7 @@ public class EldenRingGame {
         System.out.println("Alexander: 'Well done, Tarnished. Seek Hewg for your next upgrade.'");
         System.out.println("Hewg: 'Do you wish to upgrade your sword using 100k runes?' (yes/no)");
         if (scanner.nextLine().equalsIgnoreCase("yes")) {
-            player.upgradeWeapon(5, 10);
+            player.upgradeWeapon(15, 20);
             System.out.println("Hewg: 'There. Now go and make someone bleed for it.'");
         } else {
             System.out.println("Hewg: 'Come back when you’re ready to forge glory.'");
